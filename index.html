@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinicius Ramlow — Estudante & Dev em Formação</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #1B3A5C;
+    --accent:  #2E86AB;
+    --accent2: #5DADE2;
+    --light:   #AED6F1;
+    --bg:      #F0F4F8;
+    --white:   #FFFFFF;
+    --dark:    #1A1A2E;
+    --mid:     #4A5568;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,134,171,0.25) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(93,173,226,0.12) 0%, transparent 70%);
+    bottom: -80px; left: 100px;
+    pointer-events: none;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(46,134,171,0.2);
+    border: 1px solid rgba(93,173,226,0.4);
+    color: var(--light);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    width: fit-content;
+    animation: fadeUp 0.6s ease both;
+  }
+  .tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.4); }
+  }
+
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(38px, 5vw, 62px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 8px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+  .hero-name span { color: var(--accent2); }
+
+  .hero-sub {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(14px, 1.8vw, 18px);
+    font-weight: 600;
+    color: var(--light);
+    letter-spacing: 0.06em;
+    margin-bottom: 24px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.75;
+    color: rgba(174,214,241,0.8);
+    max-width: 440px;
+    margin-bottom: 44px;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.4s ease both;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 28px;
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.08);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .btn:hover::after { opacity: 1; }
+
+  .btn-primary {
+    background: var(--accent);
+    color: var(--white);
+    box-shadow: 0 4px 20px rgba(46,134,171,0.45);
+  }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(46,134,171,0.55);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--light);
+    border: 1px solid rgba(174,214,241,0.35);
+  }
+  .btn-outline:hover {
+    background: rgba(174,214,241,0.08);
+    border-color: var(--accent2);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  /* ── HERO RIGHT (foto) ── */
+  .hero-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+
+  .photo-wrap {
+    position: relative;
+    width: 320px;
+    height: 320px;
+  }
+  .photo-ring {
+    position: absolute;
+    inset: -12px;
+    border-radius: 50%;
+    border: 2px solid rgba(46,134,171,0.4);
+    animation: spin 18s linear infinite;
+  }
+  .photo-ring::before {
+    content: '';
+    position: absolute;
+    top: -3px; left: 50%;
+    transform: translateX(-50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent2);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .photo-circle {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid var(--navy);
+    box-shadow: 0 0 0 3px var(--accent), 0 20px 60px rgba(0,0,0,0.4);
+  }
+  .photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    filter: brightness(1.05) contrast(1.05);
+  }
+
+  /* ── INFO CHIPS ── */
+  .chips {
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.5s ease both;
+  }
+  .chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--light);
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    backdrop-filter: blur(8px);
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 80px 80px; }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(26px, 3vw, 38px);
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 48px;
+    line-height: 1.15;
+  }
+
+  /* ── SOBRE ── */
+  .sobre { background: var(--white); }
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .sobre-text p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--mid);
+    margin-bottom: 20px;
+  }
+  .sobre-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .info-card {
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 20px;
+    border-left: 3px solid var(--accent);
+  }
+  .info-card .ic-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .info-card .ic-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.3;
+  }
+
+  /* ── HABILIDADES ── */
+  .habilidades { background: var(--bg); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .skill-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 28px 24px;
+    border: 1px solid rgba(46,134,171,0.12);
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .skill-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(27,58,92,0.1); }
+  .skill-card:hover::before { transform: scaleX(1); }
+  .skill-icon { font-size: 28px; margin-bottom: 14px; }
+  .skill-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .skill-desc { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+  /* ── CERTIFICADOS ── */
+  .certificados { background: var(--white); }
+  .cert-list { display: flex; flex-direction: column; gap: 20px; }
+  .cert-card {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    align-items: start;
+    padding: 24px;
+    background: var(--bg);
+    border-radius: 14px;
+    border: 1px solid transparent;
+    transition: all 0.25s ease;
+  }
+  .cert-card:hover {
+    border-color: rgba(46,134,171,0.25);
+    box-shadow: 0 4px 20px rgba(27,58,92,0.07);
+  }
+  .cert-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--navy), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .cert-info .cert-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .cert-info .cert-inst {
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+  .cert-info .cert-desc {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.6;
+  }
+  .cert-badge {
+    display: inline-block;
+    background: rgba(46,134,171,0.1);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-top: 8px;
+  }
+
+  /* ── CONTATO ── */
+  .contato {
+    background: var(--navy);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .contato::before {
+    content: '';
+    position: absolute;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(46,134,171,0.2) 0%, transparent 70%);
+    top: -150px; left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+  }
+  .contato .section-title { color: var(--white); }
+  .contato .section-label { color: var(--accent2); }
+  .contato-desc {
+    font-size: 16px;
+    color: rgba(174,214,241,0.8);
+    max-width: 500px;
+    margin: 0 auto 44px;
+    line-height: 1.75;
+  }
+  .contato-btns {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .btn-gmail {
+    background: #EA4335;
+    color: white;
+    box-shadow: 0 4px 20px rgba(234,67,53,0.4);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 16px 36px;
+  }
+  .btn-gmail:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 32px rgba(234,67,53,0.55);
+    background: #d93025;
+  }
+  .btn-github-lg {
+    background: rgba(255,255,255,0.07);
+    color: var(--light);
+    border: 1px solid rgba(174,214,241,0.3);
+    font-size: 15px;
+    padding: 16px 36px;
+  }
+  .btn-github-lg:hover {
+    background: rgba(255,255,255,0.12);
+    border-color: var(--accent2);
+    color: white;
+    transform: translateY(-3px);
+  }
+
+  .contato-info {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .ci-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(174,214,241,0.7);
+    font-size: 14px;
+  }
+  .ci-item strong { color: var(--light); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    border-top: 1px solid rgba(255,255,255,0.07);
+    padding: 20px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgba(174,214,241,0.5);
+    font-size: 12px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 32px; }
+    .chips { left: 32px; bottom: 32px; }
+    section { padding: 60px 32px; }
+    .sobre-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; gap: 8px; text-align: center; padding: 20px 32px; }
+  }
+  @media (max-width: 560px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .sobre-cards { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="tag">Disponível para primeiro emprego</div>
+    <h1 class="hero-name">Vinicius<br><span>Ramlow</span></h1>
+    <p class="hero-sub">Tecnologia & Administração · Blumenau, SC</p>
+    <p class="hero-desc">
+      Jovem de 14 anos apaixonado por tecnologia, com noções de lógica de programação
+      e vontade genuína de aprender e contribuir. Curioso, proativo e sempre buscando
+      evoluir na prática.
+    </p>
+    <div class="btn-group">
+      <a class="btn btn-primary"
+         href="https://mail.google.com/mail/?view=cm&to=viniciusramlowcardosopassos@gmail.com&su=Contato+Profissional&body=Ol%C3%A1+Vinicius%2C"
+         target="_blank">
+        ✉ Entrar em contato
+      </a>
+      <a class="btn btn-outline" href="https://github.com/ViniciusPassos104" target="_blank">
+        ⌥ GitHub
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="photo-wrap">
+      <div class="photo-ring"></div>
+      <div class="photo-circle">
+        <!-- Substitua o src pela URL da sua foto hospedada -->
+        <img src="https://i.imgur.com/placeholder.jpg"
+             onerror="this.style.background='linear-gradient(135deg,#1B3A5C,#2E86AB)';this.style.display='block';this.alt='V'"
+             alt="Foto de Vinicius Ramlow">
+      </div>
+    </div>
+  </div>
+
+  <div class="chips">
+    <span class="chip">📍 Itoupava Central, Blumenau</span>
+    <span class="chip">🎓 9.º Ano · EEB Emílio Baumgart</span>
+    <span class="chip">⚡ Lógica de Programação – SENAI</span>
+  </div>
+</section>
+
+<!-- ══ SOBRE ══════════════════════════════════════════════════════ -->
+<section class="sobre">
+  <div class="reveal">
+    <p class="section-label">Quem sou eu</p>
+    <h2 class="section-title">Sobre mim</h2>
+  </div>
+  <div class="sobre-grid reveal">
+    <div class="sobre-text">
+      <p>
+        Me chamo <strong>Vinicius</strong>, tenho 14 anos e moro em Blumenau, Santa Catarina.
+        Estou no 9.º ano do ensino fundamental na EEB Emílio Baumgart e já busco minha
+        primeira oportunidade no mercado de trabalho.
+      </p>
+      <p>
+        Tenho grande interesse em <strong>Tecnologia e Administração</strong>. Recentemente
+        concluí o curso de Lógica de Programação pelo SENAI e participo de projetos
+        voltados ao desenvolvimento pessoal e profissional.
+      </p>
+      <p>
+        Sou uma pessoa responsável, criativa e com facilidade para aprender coisas novas.
+        Ofereço dedicação total e vontade genuína de crescer junto com a equipe.
+      </p>
+    </div>
+    <div class="sobre-cards">
+      <div class="info-card">
+        <div class="ic-label">Idade</div>
+        <div class="ic-value">14 anos</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-label">Cidade</div>
+        <div class="ic-value">Blumenau, SC</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-label">Formação</div>
+        <div class="ic-value">Ensino Fundamental<br>9.º Ano · 2026</div>
+      </div>
+      <div class="info-card">
+        <div class="ic-label">Objetivo</div>
+        <div class="ic-value">Primeiro Emprego<br>Tecnologia / Adm.</div>
+      </div>
+      <div class="info-card" style="grid-column: span 2;">
+        <div class="ic-label">Telefone</div>
+        <div class="ic-value">(47) 9755-2127</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ HABILIDADES ════════════════════════════════════════════════ -->
+<section class="habilidades">
+  <div class="reveal">
+    <p class="section-label">O que ofereço</p>
+    <h2 class="section-title">Habilidades</h2>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-card">
+      <div class="skill-icon">💻</div>
+      <div class="skill-name">Lógica de Programação</div>
+      <div class="skill-desc">Algoritmos, estruturas de condição e repetição, variáveis — curso SENAI de 14 horas concluído.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🖥️</div>
+      <div class="skill-name">Tecnologia & Informática</div>
+      <div class="skill-desc">Aprendizado rápido em ferramentas digitais, sistemas e recursos tecnológicos do dia a dia.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Redes Sociais</div>
+      <div class="skill-desc">Uso habitual de plataformas digitais com noção de comunicação e presença online.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤝</div>
+      <div class="skill-name">Trabalho em Equipe</div>
+      <div class="skill-desc">Colaborativo, comunicativo e comprometido com os objetivos do grupo.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">Proatividade</div>
+      <div class="skill-desc">Tomo iniciativa, antecipo necessidades e busco soluções antes de ser solicitado.</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🎯</div>
+      <div class="skill-name">Responsabilidade</div>
+      <div class="skill-desc">Pontual, comprometido com prazos e dedicado a entregar sempre o meu melhor.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CERTIFICADOS ═══════════════════════════════════════════════ -->
+<section class="certificados">
+  <div class="reveal">
+    <p class="section-label">Formação complementar</p>
+    <h2 class="section-title">Certificados & Cursos</h2>
+  </div>
+  <div class="cert-list reveal">
+    <div class="cert-card">
+      <div class="cert-icon">🖥️</div>
+      <div class="cert-info">
+        <div class="cert-name">Competência Transversal – Lógica de Programação</div>
+        <div class="cert-inst">SENAI – Escola de Educação Online</div>
+        <div class="cert-desc">Algoritmos, tipos de dados, variáveis indexadas, expressões aritméticas e lógicas, estruturas de condição e repetição.</div>
+        <span class="cert-badge">14 horas · mai/2026</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏆</div>
+      <div class="cert-info">
+        <div class="cert-name">PROTEN – Projeto Aluno Nota 10</div>
+        <div class="cert-inst">Secretaria de Educação / Blumenau, SC</div>
+        <div class="cert-desc">Aprovado com acerto superior a 70% em avaliação de desempenho acadêmico realizada na cidade de Blumenau.</div>
+        <span class="cert-badge">2025/2026</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌱</div>
+      <div class="cert-info">
+        <div class="cert-name">VIBE TEENS – Habilidades Sociais e Prevenção às Drogas</div>
+        <div class="cert-inst">Cruz Azul no Brasil / EEB Emílio Baumgart</div>
+        <div class="cert-desc">Desenvolvimento de habilidades sociais, prevenção ao uso de drogas e preparação para o mercado de trabalho.</div>
+        <span class="cert-badge">12 horas · mar–mai/2026</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CONTATO ════════════════════════════════════════════════════ -->
+<section class="contato">
+  <div class="reveal">
+    <p class="section-label">Vamos conversar</p>
+    <h2 class="section-title">Entre em Contato</h2>
+  </div>
+  <p class="contato-desc reveal">
+    Tem uma oportunidade para mim? Clique no botão abaixo e abre direto
+    o Gmail pronto para você me enviar uma mensagem.
+  </p>
+  <div class="contato-btns reveal">
+    <a class="btn btn-gmail"
+       href="https://mail.google.com/mail/?view=cm&to=viniciusramlowcardosopassos@gmail.com&su=Contato+Profissional&body=Ol%C3%A1+Vinicius%2C"
+       target="_blank">
+      ✉&nbsp; Enviar e-mail pelo Gmail
+    </a>
+    <a class="btn btn-github-lg" href="https://github.com/ViniciusPassos104" target="_blank">
+      ⌥&nbsp; Ver GitHub
+    </a>
+  </div>
+  <div class="contato-info reveal">
+    <div class="ci-item">📍 <strong>Itoupava Central, Blumenau – SC</strong></div>
+    <div class="ci-item">📱 <strong>(47) 9755-2127</strong></div>
+    <div class="ci-item">✉ <strong>viniciusramlowcardosopassos@gmail.com</strong></div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═════════════════════════════════════════════════════ -->
+<footer>
+  <span>© 2026 Vinicius Ramlow Cardoso dos Passos</span>
+  <span>Blumenau, Santa Catarina · Brasil</span>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
