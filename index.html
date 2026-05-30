@@ -20,8 +20,6 @@
     position: relative;
     overflow: hidden;
   }
-
-  /* Blobs de fundo */
   body::before {
     content: '';
     position: fixed;
@@ -41,7 +39,6 @@
     pointer-events: none;
   }
 
-  /* Card principal */
   .card {
     background: rgba(255,255,255,0.04);
     border: 1px solid rgba(255,255,255,0.08);
@@ -55,13 +52,11 @@
     z-index: 2;
     animation: fadeUp 0.6s ease both;
   }
-
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(28px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* Foto */
   .photo-wrap {
     position: relative;
     width: 90px; height: 90px;
@@ -84,177 +79,146 @@
     border: 3px solid #1B3A5C;
     background: linear-gradient(135deg, #1B3A5C, #2E86AB);
     display: flex; align-items: center; justify-content: center;
-    font-size: 32px;
-    color: white;
+    font-size: 32px; color: white;
   }
   .photo-circle img {
     width: 100%; height: 100%;
-    object-fit: cover;
-    object-position: center top;
+    object-fit: cover; object-position: center top;
   }
 
-  /* Nome e cargo */
   .name {
     font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: #ffffff;
-    margin-bottom: 4px;
+    font-size: 22px; font-weight: 800;
+    color: #ffffff; margin-bottom: 4px;
     letter-spacing: -0.02em;
   }
   .name span { color: #5DADE2; }
-
   .role {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #2E86AB;
-    margin-bottom: 6px;
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: #2E86AB; margin-bottom: 6px;
   }
-
   .location {
     font-size: 13px;
     color: rgba(174,214,241,0.6);
     margin-bottom: 28px;
   }
 
-  /* Divisor */
   .divider {
     height: 1px;
     background: linear-gradient(90deg, transparent, rgba(46,134,171,0.4), transparent);
     margin: 0 0 28px;
   }
 
-  /* Info chips */
   .chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    justify-content: center;
+    display: flex; flex-wrap: wrap;
+    gap: 8px; justify-content: center;
     margin-bottom: 28px;
   }
   .chip {
     background: rgba(46,134,171,0.12);
     border: 1px solid rgba(46,134,171,0.25);
-    color: #AED6F1;
-    font-size: 11px;
-    font-weight: 500;
-    padding: 5px 12px;
-    border-radius: 100px;
+    color: #AED6F1; font-size: 11px; font-weight: 500;
+    padding: 5px 12px; border-radius: 100px;
   }
 
-  /* Botão Gmail */
-  .btn-gmail {
+  /* Botões */
+  .btn {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
     width: 100%;
-    padding: 16px;
+    padding: 15px 16px;
     border-radius: 12px;
-    background: linear-gradient(135deg, #EA4335, #c0392b);
-    color: white;
     font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
+    font-size: 15px; font-weight: 600;
+    text-decoration: none; border: none;
     cursor: pointer;
-    box-shadow: 0 8px 24px rgba(234,67,53,0.35);
     transition: all 0.25s ease;
     margin-bottom: 12px;
-    position: relative;
-    overflow: hidden;
+    position: relative; overflow: hidden;
   }
-  .btn-gmail::after {
-    content: '';
-    position: absolute;
-    inset: 0;
+  .btn::after {
+    content: ''; position: absolute; inset: 0;
     background: rgba(255,255,255,0.08);
-    opacity: 0;
-    transition: opacity 0.2s;
+    opacity: 0; transition: opacity 0.2s;
   }
-  .btn-gmail:active::after { opacity: 1; }
-  .btn-gmail:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 32px rgba(234,67,53,0.45);
+  .btn:active::after { opacity: 1; }
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-gmail {
+    background: linear-gradient(135deg, #EA4335, #c0392b);
+    color: white;
+    box-shadow: 0 8px 24px rgba(234,67,53,0.35);
   }
+  .btn-gmail:hover { box-shadow: 0 12px 32px rgba(234,67,53,0.45); }
+
+  .btn-pdf {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #AED6F1;
+  }
+  .btn-pdf:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: #2E86AB;
+    color: white;
+  }
+
   .btn-icon {
     width: 28px; height: 28px;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    flex-shrink: 0;
+    font-size: 14px; flex-shrink: 0;
   }
   .btn-text { display: flex; flex-direction: column; text-align: left; }
   .btn-text-main { font-size: 14px; font-weight: 600; }
-  .btn-text-sub  { font-size: 11px; font-weight: 400; opacity: 0.8; }
+  .btn-text-sub  { font-size: 11px; font-weight: 400; opacity: 0.7; }
 
-  /* Status */
   .status-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 4px;
-    margin-bottom: 20px;
+    display: flex; align-items: center;
+    justify-content: center; gap: 6px;
+    margin: 4px 0 20px;
   }
   .status-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #2E86AB;
-    animation: pulse 2s infinite;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: #2E86AB; animation: pulse 2s infinite;
   }
   @keyframes pulse {
     0%,100% { opacity: 1; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(1.4); }
   }
-  .status-text {
-    font-size: 11px;
-    color: rgba(174,214,241,0.55);
-  }
+  .status-text { font-size: 11px; color: rgba(174,214,241,0.55); }
 
-  /* Footer links */
   .footer-links {
-    display: flex;
-    gap: 16px;
-    justify-content: center;
+    display: flex; gap: 16px; justify-content: center;
     padding-top: 20px;
     border-top: 1px solid rgba(255,255,255,0.06);
   }
   .footer-link {
-    font-size: 12px;
-    color: rgba(174,214,241,0.45);
-    text-decoration: none;
-    transition: color 0.2s;
+    font-size: 12px; color: rgba(174,214,241,0.45);
+    text-decoration: none; transition: color 0.2s;
   }
   .footer-link:hover { color: #5DADE2; }
 
-  /* Mensagem feedback */
   #feedback {
-    font-size: 12px;
-    color: #5DADE2;
-    min-height: 18px;
-    margin-bottom: 8px;
-    font-weight: 500;
-    opacity: 0;
+    font-size: 12px; color: #5DADE2;
+    min-height: 18px; margin-bottom: 8px;
+    font-weight: 500; opacity: 0;
     transition: opacity 0.3s;
   }
   #feedback.show { opacity: 1; }
 </style>
 </head>
 <body>
-
 <div class="card">
 
   <div class="photo-wrap">
     <div class="photo-ring"></div>
     <div class="photo-circle">
       <img src="https://avatars.githubusercontent.com/ViniciusPassos104"
-           onerror="this.style.display='none'"
-           alt="Vinicius">
+           onerror="this.style.display='none'" alt="Vinicius">
     </div>
   </div>
 
@@ -272,11 +236,23 @@
 
   <div id="feedback"></div>
 
-  <a class="btn-gmail" id="btnEmail" href="#">
+  <!-- Botão Gmail -->
+  <a class="btn btn-gmail" id="btnEmail" href="#">
     <div class="btn-icon">✉</div>
     <div class="btn-text">
       <span class="btn-text-main">Enviar e-mail para Vinicius</span>
-      <span class="btn-text-sub" id="btn-sub">Abrindo Gmail...</span>
+      <span class="btn-text-sub" id="btn-sub">Detectando dispositivo...</span>
+    </div>
+  </a>
+
+  <!-- Botão Ver Currículo PDF -->
+  <a class="btn btn-pdf"
+     href="https://viniciuspassos104.github.io/site-via-email-de-contato/curriculo_vinicius_ramlow.pdf"
+     target="_blank">
+    <div class="btn-icon">📄</div>
+    <div class="btn-text">
+      <span class="btn-text-main">Ver Currículo</span>
+      <span class="btn-text-sub">Abre o PDF direto no navegador</span>
     </div>
   </a>
 
@@ -287,7 +263,7 @@
 
   <div class="footer-links">
     <a class="footer-link" href="https://github.com/ViniciusPassos104" target="_blank">⌥ GitHub</a>
-    <a class="footer-link" href="tel:+5547975521270">📱 (47) 9755-2127</a>
+    <a class="footer-link" href="tel:+554797552127">📱 (47) 9755-2127</a>
   </div>
 
 </div>
@@ -302,20 +278,20 @@
 
   const isMobile = /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent);
 
-  const btn     = document.getElementById("btnEmail");
-  const sub     = document.getElementById("btn-sub");
-  const status  = document.getElementById("statusTxt");
-  const feedback= document.getElementById("feedback");
+  const btn      = document.getElementById("btnEmail");
+  const sub      = document.getElementById("btn-sub");
+  const statusTx = document.getElementById("statusTxt");
+  const feedback = document.getElementById("feedback");
 
   if (isMobile) {
-    btn.href   = mailtoLnk;
-    sub.textContent    = "Abre o app Gmail no celular";
-    status.textContent = "📱 Celular detectado";
+    btn.href        = mailtoLnk;
+    sub.textContent = "Abre o app Gmail no celular";
+    statusTx.textContent = "📱 Celular detectado";
   } else {
-    btn.href   = gmailWeb;
-    btn.target = "_blank";
-    sub.textContent    = "Abre o Gmail no navegador";
-    status.textContent = "💻 Computador detectado";
+    btn.href        = gmailWeb;
+    btn.target      = "_blank";
+    sub.textContent = "Abre o Gmail no navegador";
+    statusTx.textContent = "💻 Computador detectado";
   }
 
   btn.addEventListener("click", () => {
